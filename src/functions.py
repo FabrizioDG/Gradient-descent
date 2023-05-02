@@ -1,8 +1,8 @@
 import numpy as np
 
-def cost_function(X,y,w,b):
+def cost_function(X, y, w, b):
     """
-    Evaluate the cost function 1/n sum (y - yhat)**2
+    Evaluate the cost function 1/m sum (y - yhat)**2
 
     Inputs:
     X (ndarray (m,n)): Data, m training examples, n features
@@ -14,11 +14,11 @@ def cost_function(X,y,w,b):
     dj_dw (ndarray(,n)) : gradient w.r.t parameters w
     dj_db (scalar) : gradient w.r.t. parameter b
     """
-    m, n = X.shape
+    m, _ = X.shape
     cost = 1/m * np.sum((np.dot(X, w) + b - y)**2)
     return cost
 
-def gradient (X,y,w,b, clip_value = None):
+def gradient (X, y, w, b, clip_value = None):
     """
     Evaluate the gradient of the cost function w.r.t. the parameters w and b
     Inputs:
@@ -59,7 +59,7 @@ def gradient (X,y,w,b, clip_value = None):
     return dj_dw, dj_db
 
 
-def gradient_descent(X,y,w_in,b_in, alpha, tolerance = 1e-10, num_iter = 100000, clip_value=None):
+def gradient_descent(X, y, w_in, b_in, alpha, tolerance = 1e-10, num_iter = 100000, clip_value=None):
     """
     Gradient descent to minimize the cost function
     
